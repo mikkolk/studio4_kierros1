@@ -89,7 +89,7 @@ public class Sijoittaja
 				if (!pallo.mahtuuSijaintiin(uusix, uusiy, this.nimet))
 					continue;
 				// Tarkistaa, että lähellä (<50 px päässä) on toinen pallo
-				if (pallo.onkoLiianKaukana(uusix, uusiy, this.nimet, 50))
+				if (pallo.onkoLiianKaukana(uusix, uusiy, this.nimet, 30))
 					continue;
 					
 				// Jos kaikki OK, sijoittaa pallon uuteen sijaintiin
@@ -106,7 +106,7 @@ public class Sijoittaja
 	private Nimipallo lisaaPallo(int x, int y, String nimi, int n, int vuosia)
 	{
 		// Lasketaan pallon säde ja viivan paksuus
-		int r = (int)( (n / ( (double) vuosia)) * 50 + 10 );
+		int r = (int)( (n / ( (double) vuosia)) * 60 + 5 );
 		int k = 10 - vuosia;
 		if (k < 1)
 			k = 1;
