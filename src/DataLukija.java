@@ -36,13 +36,13 @@ public class DataLukija
 	{
 		// Alustaa muuttujat
 		// TODO: Lis‰‰ tarkistus t‰nne?
-		tiedosto = new File(tiedostonimi);
-		nimidata = new HashMap<Integer, HashMap<String, Integer>>();
+		this.tiedosto = new File(tiedostonimi);
+		this.nimidata = new HashMap<Integer, HashMap<String, Integer>>();
 		
 		// Lukee datan tiedostosta
 		try
 		{
-			lueDataTiedostosta(tiedosto);
+			lueDataTiedostosta(this.tiedosto);
 		}
 		catch (FileNotFoundException fnfe)
 		{
@@ -82,7 +82,7 @@ public class DataLukija
 			{
 				// Tallentaa ensin vanhan vuosidatan
 				if (vuosidata != null)
-					nimidata.put(vuosi, (HashMap<String, Integer>)
+					this.nimidata.put(vuosi, (HashMap<String, Integer>)
 							vuosidata.clone());
 				
 				// Paivittaa nykyiset tiedot
@@ -108,7 +108,7 @@ public class DataLukija
 		
 		// Tallentaa lopuksi viimeisen vuosidatan
 		if (vuosidata != null)
-			nimidata.put(vuosi, (HashMap<String, Integer>)
+			this.nimidata.put(vuosi, (HashMap<String, Integer>)
 					vuosidata.clone());
 	}
 	
@@ -127,11 +127,11 @@ public class DataLukija
 		if (data == null)
 		{	
 			// Kay lapi kaikki vuosidatat
-			for (int vuosi : nimidata.keySet())
+			for (int vuosi : this.nimidata.keySet())
 			{
 				// Printtaa vuoden ja kay lapi kaikki nimet
 				System.out.println(vuosi + ":");
-				HashMap<String, Integer> vuosidata = nimidata.get(vuosi);
+				HashMap<String, Integer> vuosidata = this.nimidata.get(vuosi);
 				
 				for (String nimi : vuosidata.keySet())
 				{
@@ -167,15 +167,15 @@ public class DataLukija
 		HashMap<String, Integer> uusidata = new HashMap<String, Integer>();
 		
 		// Kay lapi kaikki vuosimapit, jotka osuvat valille
-		for (int vuosi : nimidata.keySet())
+		for (int vuosi : this.nimidata.keySet())
 		{
 			if (vuosi < ekavuosi || vuosi > vikavuosi)
 				continue;
 			
 			// Kay lapi vuosidatan ja lisaa sen nimet uuteen dataan
-			for (String uusinimi : nimidata.get(vuosi).keySet())
+			for (String uusinimi : this.nimidata.get(vuosi).keySet())
 			{
-				int montalisataan = nimidata.get(vuosi).get(uusinimi);
+				int montalisataan = this.nimidata.get(vuosi).get(uusinimi);
 				lisaaNimiMappiin(uusinimi, uusidata, montalisataan);
 			}
 		}
@@ -252,6 +252,7 @@ public class DataLukija
 	 *
 	 * @param args ei tee mitaan
 	 */
+	/*
 	public static void main(String[] args)
 	{
 		DataLukija datamies = new DataLukija("nimilista.txt");
@@ -270,4 +271,5 @@ public class DataLukija
 			System.out.println((i + 1) + ": " + ranking[i]);
 		}
 	}
+	*/
 }

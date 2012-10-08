@@ -1,17 +1,36 @@
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import processing.core.*;
 
 public class Visualisaatio extends PApplet {
 
-  public void setup() {
-    size(200,200);
-    background(0);
-  }
+	// ATTRIBUUTIT
+	private DataLukija lukija;
+	private Sijoittaja sijoittaja;
 
-  public void draw() {
-    stroke(255);
-    if (mousePressed) {
-      line(mouseX,mouseY,pmouseX,pmouseY);
-    }
-  }
+	@Override
+	public void setup()
+	{
+		size(800, 500);
+		
+		// Alustaa datalukijan ja sijoittajan
+		this.lukija = new DataLukija("../nimilista.txt");
+		this.sijoittaja = new Sijoittaja(this.width, this.height, this);
+		
+		// Lukee vuodet 1999-2011
+		HashMap<String, Integer> data = this.lukija.kokoaVuodet(1999, 2011);
+		String[] jarjestys = this.lukija.annaJarjestys(data);
+		
+		// Sijoittaa datan kent‰lle
+		this.sijoittaja.sijoitaData(data, jarjestys, 12);
+	}
+
+	@Override
+	public void draw()
+	{
+		// Piirt‰‰ kaikki nimipallot
+		this.sijoittaja.piirraPallot();
+	}
 }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import processing.core.*;
 
 
 /**
@@ -14,6 +15,7 @@ public class Nimipallo
 	// jossa n on nimien maara, r on pallon s‰de ja k on viivan paksuus
 	private int x, y, n, r, k;
 	private String nimi;
+	private PApplet pohja;
 	
 	
 	// KONSTRUKTORI
@@ -27,9 +29,10 @@ public class Nimipallo
 	 * @param maara kuinka monta rengasta nimipallon ymp‰rille tulee
 	 * @param sade nimipallon uusi s‰de
 	 * @param paksuus nimipallon renkaiden paksuus pikselein‰
+	 * @param pohja PApplet, joka piirt‰‰ nimipallon
 	 */
 	public Nimipallo(int uusix, int uusiy, String uusinimi, int maara,
-			int sade, int paksuus)
+			int sade, int paksuus, PApplet pohja)
 	{
 		this.x = uusix;
 		this.y = uusiy;
@@ -37,6 +40,7 @@ public class Nimipallo
 		this.n = maara;
 		this.r = sade;
 		this.k = paksuus;
+		this.pohja = pohja;
 	}
 	
 	
@@ -154,26 +158,26 @@ public class Nimipallo
 	{
 		// TODO: Poista kommentointi (sensuuri)
 		// Piirtaa taustaympyrat
-		for (int i = 1; i <= n; i++)
+		for (int i = 1; i <= this.n; i++)
 		{
 			// Lasketaan pallon s‰de
-			int ri = this.r * (i / this.n);
+			int ri = (int) (this.r * (i / ((double) this.n)));
 			
 			// Asetetaan piirtov‰ri
 			// TODO: Mariannan duuni
 			
 			// Asetetaan kaaren paksuuus
-			// stroke(k);
-			// noFill()
+			this.pohja.strokeWeight(this.k);
+			this.pohja.noFill();
 			
 			// Piirret‰‰n ympyr‰
-			// eclipse(this.x, this.y, ri);
+			this.pohja.ellipse(this.x, this.y, 2*ri, 2*ri);
 		}
 		
 		// Piirtaa nimen
 		
 		// Asettaa fontin
 		// TODO: Jonkun muun duuni
-		// text(nimi, x, y);
+		this.pohja.text(this.nimi, this.x, this.y);
 	}
 }
