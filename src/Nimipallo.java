@@ -107,8 +107,8 @@ public class Nimipallo
 	public boolean mahtuuSijaintiin(int uusix, int uusiy,
 			ArrayList<Nimipallo> nimet)
 	{
-		float txtw = this.pohja.textWidth(this.nimi);
-		float txth = this.pohja.textAscent();
+		//float txtw = this.pohja.textWidth(this.nimi);
+		//float txth = this.pohja.textAscent();
 		
 		// Tarkistaa tormayksen kaikille nimille erikseen
 		for (Nimipallo pallo2 : nimet)
@@ -123,11 +123,26 @@ public class Nimipallo
 			// TODO: Lis‰‰ fontin muuttaminen niin, ett‰ tarkistaminen on
 			// ‰lyk‰st‰
 			
-			// TODO: Tee valmiiksi
-			
 			//float txtw2 = this.pohja.textWidth(pallo2.annaNimi());
 			
-			// TODO: Lisaa tarkistus, etteivat tekstit leikkaa toisiaan
+			// Tarkistaa, etteiv‰t pallojen tekstit leikkaa toisiaan
+			/*
+			int ax1 = this.x - (int) txtw/2;
+			int ax2 = ax1 + (int) txtw;
+			int ay1 = this.y - (int) txth/2;
+			int ay2 = ay1 + (int) txth;
+			int bx1 = xy[0] - (int) txtw2/2;
+			int bx2 = bx1 + (int) txtw2;
+			int by1 = xy[1] - (int) txth/2;
+			int by2 = by1 + (int) txth;
+			
+			if (((ax1 < bx2 && ax1 > bx1) && (ay1 < by2 && ay1 > by1)) ||
+					((bx1 < ax2 && bx1 > ax1) && (by1 < ay2 && by1 > ay1)))
+			{
+				System.out.println("ASDASDASDASDASDASDA!!!!");
+				return false;
+			}
+			*/
 		}
 		return true;
 	}
@@ -199,7 +214,6 @@ public class Nimipallo
 	 */
 	public void piirraItse()
 	{
-		// TODO: Poista kommentointi (sensuuri)
 		// Piirtaa taustaympyrat
 		for (int i = 1; i <= this.n; i++)
 		{

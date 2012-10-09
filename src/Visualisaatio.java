@@ -35,11 +35,11 @@ public class Visualisaatio extends PApplet
 		this.slideripiirtaja = new SlideriPiirtaja(this);
 		
 		// Lukee vuodet 1999-2011
-		HashMap<String, Integer> data = this.lukija.kokoaVuodet(1999, 2011);
+		HashMap<String, Integer> data = this.lukija.kokoaVuodet(1999, 2012);
 		String[] jarjestys = this.lukija.annaJarjestys(data);
 		
 		// Sijoittaa datan kent‰lle
-		this.sijoittaja.sijoitaData(data, jarjestys, 12);
+		this.sijoittaja.sijoitaData(data, jarjestys, 13);
 	}
 
 	@Override
@@ -47,6 +47,7 @@ public class Visualisaatio extends PApplet
 	{
 	    this.background(255);
 		// Piirt‰‰ kaikki nimipallot
+		textSize(14);
 		this.sijoittaja.piirraPallot();
 		this.slideripiirtaja.piirraSliderit();
 	}
