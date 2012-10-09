@@ -77,14 +77,27 @@ public class Sijoittaja
 			Nimipallo pallo =
 					lisaaPallo(-1000, -1000, uusinimi, uusimaara, vuosia);
 			
+			int iteraatioita = 0;
+			
 			// TODO: Lisaa stackOverFlow-tarkistukset
 			// Toistaa, kunnes löydetään sopiva kohta ja breakataan
 			while (true)
 			{
+				iteraatioita ++;
+				if (iteraatioita > 10000)
+				{
+					System.out.println("STACKOVERFLOOW");
+					break;
+				}
+				
 				// Arpoo uuden sijainnin
 				int uusix = rand.nextInt(this.leveys + 1);
 				int uusiy = rand.nextInt(this.korkeus + 1);
 				
+				// Tarkistaa, että pallo on kokonaan ikkunassa
+				if (!pallo.mahtuukoIkkunaan(uusix, uusiy,
+						this.leveys, this.korkeus))
+					continue;
 				// Tarkistaa, ettei sijainnin kanssa törmäillä
 				if (!pallo.mahtuuSijaintiin(uusix, uusiy, this.nimet))
 					continue;

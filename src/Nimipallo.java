@@ -151,6 +151,29 @@ public class Nimipallo
 	
 	/**
 	 * 
+	 * Testaa, mahtuisiko nimipallo kokonaan ikkunaan annetuissa koordinaateissa
+	 *
+	 * @param uusix uuden sijainnin x-koordinaatti
+	 * @param uusiy uuden sijainnin y-koordinaatti
+	 * @param w ikkunan leveys pikselein‰
+	 * @param h ikkunan korkeus pikselein‰
+	 * @return mahtuuko pallo kokonaan ikkunaan
+	 */
+	public boolean mahtuukoIkkunaan(int uusix, int uusiy, int w,
+			int h)
+	{
+		// Checkkaa reunojen ylitykset
+		if (uusix - this.r < 0 || uusix + this.r > w)
+			return false;
+		if (uusiy - this.r < 0 || uusiy + this.r > h)
+			return false;
+		
+		// Jos ei konflikteja, palauttaa true
+		return true;
+	}
+	
+	/**
+	 * 
 	 * Piirt‰‰ nimipallon ympyr‰t sek‰ nimen
 	 *
 	 */
