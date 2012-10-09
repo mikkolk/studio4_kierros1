@@ -13,7 +13,7 @@ public class Nimipallo
 {
 	// ATTRIBUUTIT
 	// jossa n on nimien maara, r on pallon säde ja k on viivan paksuus
-	private int x, y, n, r, k;
+	private int x, y, vuosirenkaita, r, rengaspaksuus;
 	private String nimi;
 	private PApplet pohja;
 	
@@ -37,9 +37,9 @@ public class Nimipallo
 		this.x = uusix;
 		this.y = uusiy;
 		this.nimi = uusinimi;
-		this.n = maara;
+		this.vuosirenkaita = maara;
 		this.r = sade;
-		this.k = paksuus;
+		this.rengaspaksuus = paksuus;
 		this.pohja = pohja;
 	}
 	
@@ -215,16 +215,16 @@ public class Nimipallo
 	public void piirraItse()
 	{
 		// Piirtaa taustaympyrat
-		for (int i = 1; i <= this.n; i++)
+		for (int i = 1; i <= this.vuosirenkaita; i++)
 		{
 			// Lasketaan pallon säde
-			int ri = (int) (this.r * (i / ((double) this.n)));
+			int ri = (int) (this.r * (i / ((double) this.vuosirenkaita)));
 			
 			// Asetetaan piirtoväri
 			// TODO: Mariannan duuni
 			
 			// Asetetaan kaaren paksuuus
-			this.pohja.strokeWeight(this.k);
+			this.pohja.strokeWeight(this.rengaspaksuus);
 			this.pohja.noFill();
 			
 			// Piirretään ympyrä
