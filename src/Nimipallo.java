@@ -192,15 +192,16 @@ public class Nimipallo
 	 * @param uusiy uuden sijainnin y-koordinaatti
 	 * @param w ikkunan leveys pikselein‰
 	 * @param h ikkunan korkeus pikselein‰
+	 * @param marginaali kuinka paljon marginaalia j‰tet‰‰n ikkunan reunoille
 	 * @return mahtuuko pallo kokonaan ikkunaan
 	 */
 	public boolean mahtuukoIkkunaan(int uusix, int uusiy, int w,
-			int h)
+			int h, int marginaali)
 	{
 		// Checkkaa reunojen ylitykset
-		if (uusix - this.r < 0 || uusix + this.r > w)
+		if (uusix - this.r < 0 + marginaali || uusix + this.r > w - marginaali)
 			return false;
-		if (uusiy - this.r < 0 || uusiy + this.r > h)
+		if (uusiy - this.r < 0 + marginaali || uusiy + this.r > h - marginaali)
 			return false;
 		
 		// Jos ei konflikteja, palauttaa true
