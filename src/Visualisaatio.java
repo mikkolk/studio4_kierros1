@@ -1,5 +1,4 @@
 import java.util.HashMap;
-
 import processing.core.*;
 
 /**
@@ -46,6 +45,7 @@ public class Visualisaatio extends PApplet
 	@Override
 	public void draw()
 	{
+	    this.background(255);
 		// Piirt‰‰ kaikki nimipallot
 		this.sijoittaja.piirraPallot();
 		this.slideripiirtaja.piirraSliderit();
