@@ -11,9 +11,7 @@ import processing.core.*;
 public class SlideriPiirtaja {
     private PApplet pohja; // pohjana toimiva visualisaatio
     private int slider1Arvo; // sliderin 1 arvo
-    private int slider2Arvo; // sliderin 2 arvo
     private GWSlider slider1; // slider 1
-    private GWSlider slider2; // slider 2
     // ylemm‰n sliderin x- ja y-koordinaattit sek‰ leveys, k‰ytet‰‰n marginaaliin
     private int ylinX;
     private int ylinY;
@@ -26,15 +24,6 @@ public class SlideriPiirtaja {
      */
     public SlideriPiirtaja(Visualisaatio pohja){
         this.pohja = pohja;
-        this.slider1 = new GWSlider(this.pohja, (int) (0.2*(this.annaPohja().width)),
-                (int) (0.97*(this.annaPohja().height)),
-                (int) (0.6*(this.annaPohja().width)));
-        this.slider1.setValueType(GWSlider.INTEGER);
-        this.slider1.setLimits(1, 1999, 2012);
-        this.slider1.setTickCount(13);
-        this.slider1.setStickToTicks(true);
-        this.slider1.setRenderMaxMinLabel(false);
-        this.slider1.setTickColour(this.annaPohja().color(255,255,255,0));
         
         this.ylinX = (int) (0.2*(this.annaPohja().width));
         this.ylinY = (int) (0.93*(this.annaPohja().height));
@@ -58,18 +47,18 @@ public class SlideriPiirtaja {
     }
     
     public int annaYlinX() {
-        return ylinX;
+        return this.ylinX;
     }
 
     public int annaYlinY() {
-        return ylinY;
+        return this.ylinY;
     }
 
     public int annaYlinLeveys() {
-        return ylinLeveys;
+        return this.ylinLeveys;
     }
 
-    public void piirraSliderit(){
+    public void piirraSlideri(){
         this.handleSliderEvents(this.slider1);
     }
     
@@ -78,6 +67,7 @@ public class SlideriPiirtaja {
      * @param slider slider, jonka eventit k‰sitell‰‰n
      */
     public void handleSliderEvents(GSlider slider) {
-        this.slider1Arvo = (int) slider.getValuef();
+        this.slider1Arvo = slider.getValue();
+        System.out.println(this.slider1Arvo);
     }
 }

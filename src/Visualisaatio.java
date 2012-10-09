@@ -15,6 +15,7 @@ public class Visualisaatio extends PApplet
 	private DataLukija lukija;
 	private Sijoittaja sijoittaja;
 	private SlideriPiirtaja slideripiirtaja;
+	private SlideriPiirtaja2 slideripiirtaja2;
 	
 	public Sijoittaja annaSijoittaja(){
 	    return this.sijoittaja;
@@ -37,6 +38,7 @@ public class Visualisaatio extends PApplet
 		this.lukija = new DataLukija("../nimilista.txt");
 		this.sijoittaja = new Sijoittaja(this.width, this.height, this);
 		this.slideripiirtaja = new SlideriPiirtaja(this);
+		this.slideripiirtaja2 = new SlideriPiirtaja2(this);
 		
 		// Lukee vuodet 1999-2011
 		HashMap<String, Integer> data = this.lukija.kokoaVuodet(1999, 2012);
@@ -53,6 +55,7 @@ public class Visualisaatio extends PApplet
 		// Piirt‰‰ kaikki nimipallot
 		textSize(14);
 		this.sijoittaja.piirraPallot();
-		this.slideripiirtaja.piirraSliderit();
+		this.slideripiirtaja.piirraSlideri();
+		this.slideripiirtaja2.piirraSlideri();
 	}
 }
