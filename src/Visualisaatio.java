@@ -23,6 +23,10 @@ public class Visualisaatio extends PApplet
 	public DataLukija annaDatalukija(){
 	    return this.lukija;
 	}
+	
+	public SlideriPiirtaja annaSlideriPiirtaja(){
+	    return this.slideripiirtaja;
+	}
 
     @Override
 	public void setup()
