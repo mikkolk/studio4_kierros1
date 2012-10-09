@@ -81,13 +81,23 @@ public class Nimipallo
 		this.y = uusiy;
 	}
 	
+	/**
+	 * 
+	 * Palauttaa nimipallon kirjoittaman nimen
+	 *
+	 * @return nimipallon kirjoittama nimi
+	 */
+	public String annaNimi()
+	{
+		return this.nimi;
+	}
 	
 	// OMAT METODIT
 	
 	/**
 	 * 
-	 * Kertoo, leikkisivatko nimipallojen säteet, mikäli tämä nimipallo
-	 * sijoitettaisiin annettuun sijaintin.
+	 * Kertoo, leikkisivatko nimipallojen säteet tai tekstit, mikäli
+	 * tämä nimipallo sijoitettaisiin annettuun sijaintin.
 	 *
 	 * @param uusix testattava x-koordinaatti
 	 * @param uusiy testattava y-koordinaatti
@@ -97,6 +107,9 @@ public class Nimipallo
 	public boolean mahtuuSijaintiin(int uusix, int uusiy,
 			ArrayList<Nimipallo> nimet)
 	{
+		float txtw = this.pohja.textWidth(this.nimi);
+		float txth = this.pohja.textAscent();
+		
 		// Tarkistaa tormayksen kaikille nimille erikseen
 		for (Nimipallo pallo2 : nimet)
 		{
@@ -106,6 +119,13 @@ public class Nimipallo
 			if (annaEtaisyys(uusix, uusiy, xy[0], xy[1])
 					< this.r + pallo2.annaSade())
 				return false;
+			
+			// TODO: Lisää fontin muuttaminen niin, että tarkistaminen on
+			// älykästä
+			
+			// TODO: Tee valmiiksi
+			
+			//float txtw2 = this.pohja.textWidth(pallo2.annaNimi());
 			
 			// TODO: Lisaa tarkistus, etteivat tekstit leikkaa toisiaan
 		}
