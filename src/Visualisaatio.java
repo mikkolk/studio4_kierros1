@@ -47,6 +47,7 @@ public class Visualisaatio extends PApplet
 	public void draw()
 	{
 		// Piirt‰‰ kaikki nimipallot
+		textSize(14);
 		this.sijoittaja.piirraPallot();
 		this.slideripiirtaja.piirraSliderit();
 	}
