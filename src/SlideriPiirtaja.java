@@ -1,6 +1,5 @@
 import guicomponents.*;
 import processing.core.*;
-import guicomponents.*;
 
 
 /**
@@ -10,10 +9,15 @@ import guicomponents.*;
  *
  */
 public class SlideriPiirtaja {
-    private PApplet pohja;
-    private int slider1arvo;
-    private GWSlider slider1;
+    private PApplet pohja; // pohjana toimiva visualisaatio
+    private int slider1Arvo; // sliderin 1 arvo
+    private GWSlider slider1; // slider 1
     
+    /**
+     * Konstruktori luo sliderit, laittaa niiden asetukset kuntoon ja ottaa
+     * pohjana toimivan Visualisaation
+     * @param pohja pohjana toimiva Visualisaatio
+     */
     public SlideriPiirtaja(Visualisaatio pohja){
         this.pohja = pohja;
         this.slider1 = new GWSlider(this.pohja, (int) (0.2*(this.annaPohja().width)),
@@ -27,16 +31,23 @@ public class SlideriPiirtaja {
         this.slider1.setTickColour(this.annaPohja().color(0,0,0,0));
     }
     
+    public int annaSlider1Arvo() {
+        return slider1Arvo;
+    }
+    
     public PApplet annaPohja() {
         return this.pohja;
     }
     
     public void piirraSliderit(){
-        this.handleSliderEvents(slider1);
+        this.handleSliderEvents(this.slider1);
     }
     
+    /**
+     * Metodi, joka huolehtii sliderien eventtien kuuntelusta.
+     * @param slider slider, jonka eventit k‰sitell‰‰n
+     */
     public void handleSliderEvents(GSlider slider) {
-        this.slider1arvo = (int) slider.getValuef();
-        System.out.println(this.slider1arvo);
+        this.slider1Arvo = (int) slider.getValuef();
     }
 }
