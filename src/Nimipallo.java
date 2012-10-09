@@ -12,7 +12,7 @@ import processing.core.*;
 public class Nimipallo
 {
 	// ATTRIBUUTIT
-	// jossa n on nimien maara, r on pallon säde ja k on viivan paksuus
+	// jossa vuosirenkaita on nimien maara, r on pallon säde ja renkaan viivan paksuus
 	private int x, y, vuosirenkaita, r, rengaspaksuus;
 	private String nimi;
 	private PApplet pohja;
