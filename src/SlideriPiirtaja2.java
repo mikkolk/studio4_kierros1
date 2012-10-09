@@ -19,7 +19,7 @@ public class SlideriPiirtaja2 {
                 (int) (0.97*(this.annaPohja().height)),
                 (int) (0.6*(this.annaPohja().width)));
         this.slider2.setValueType(GWSlider.INTEGER);
-        this.slider2.setLimits(1, 1999, 2012);
+        this.slider2.setLimits(2012, 1999, 2012);
         this.slider2.setTickCount(13);
         this.slider2.setStickToTicks(true);
         this.slider2.setRenderMaxMinLabel(false);

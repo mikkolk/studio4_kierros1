@@ -31,7 +31,7 @@ public class SlideriPiirtaja {
         this.slider1 = new GWSlider(this.pohja, this.ylinX, this.ylinY,
                 this.ylinLeveys);
         this.slider1.setValueType(GWSlider.INTEGER);
-        this.slider1.setLimits(1, 1999, 2012);
+        this.slider1.setLimits(1999, 1999, 2012);
         this.slider1.setTickCount(13);
         this.slider1.setStickToTicks(true);
         this.slider1.setRenderMaxMinLabel(false);
