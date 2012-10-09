@@ -117,7 +117,7 @@ public class Nimipallo
 			
 			// Tarkistaa, etteivat pallojen ympyrat leikkaa toisiaan
 			if (annaEtaisyys(uusix, uusiy, xy[0], xy[1])
-					< this.r + pallo2.annaSade())
+					< this.r + pallo2.annaSade() + 5)
 				return false;
 			
 			// TODO: Lisää fontin muuttaminen niin, että tarkistaminen on
