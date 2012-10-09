@@ -13,7 +13,7 @@ public class Nimipallo
 {
 	// ATTRIBUUTIT
 	// jossa n on nimien maara, r on pallon s‰de ja k on viivan paksuus
-	private int x, y, n, r, k;
+	private int x, y, vuosirenkaita, r, rengaspaksuus;
 	private String nimi;
 	private PApplet pohja;
 	
@@ -37,9 +37,9 @@ public class Nimipallo
 		this.x = uusix;
 		this.y = uusiy;
 		this.nimi = uusinimi;
-		this.n = maara;
+		this.vuosirenkaita = maara;
 		this.r = sade;
-		this.k = paksuus;
+		this.rengaspaksuus = paksuus;
 		this.pohja = pohja;
 	}
 	
@@ -192,19 +192,45 @@ public class Nimipallo
 	 * @param uusiy uuden sijainnin y-koordinaatti
 	 * @param w ikkunan leveys pikselein‰
 	 * @param h ikkunan korkeus pikselein‰
+	 * @param marginaali kuinka paljon marginaalia j‰tet‰‰n ikkunan reunoille
 	 * @return mahtuuko pallo kokonaan ikkunaan
 	 */
 	public boolean mahtuukoIkkunaan(int uusix, int uusiy, int w,
-			int h)
+			int h, int marginaali)
 	{
 		// Checkkaa reunojen ylitykset
-		if (uusix - this.r < 0 || uusix + this.r > w)
+		if (uusix - this.r < 0 + marginaali || uusix + this.r > w - marginaali)
 			return false;
-		if (uusiy - this.r < 0 || uusiy + this.r > h)
+		if (uusiy - this.r < 0 + marginaali || uusiy + this.r > h - marginaali)
 			return false;
 		
 		// Jos ei konflikteja, palauttaa true
 		return true;
+	}
+	
+	/**
+	 * 
+	 * Kertoo, tulisiko nimipallo sliderien taakse, jos se sijoitettaisiin
+	 * annettuihin koordinaatteihin
+	 *
+	 * @param uusix testattava x-koordinaatti
+	 * @param uusiy testattava y-koordinaatti
+	 * @return osuuko slidereihin
+	 */
+	public boolean leikkaakoSliderit(int uusix, int uusiy)
+	{
+		// Checkkaa marginaalin reunojen ylitykset
+		/*
+		int slidx = pohja.annaSilderipiirtaja.annaYlinX();
+		int slidy = pohja.annaSlideripiirtaja.annaYlinY();
+		int w = pohja.annaSlideripiirtaja.annaYlinLeveys();
+		
+		if (uusix - this.r > slidx && uusix - this.r < slidx + w
+				&& uusiy + this.r > slidy)
+			return true;
+		*/
+		// Jos ei konflikteja, palauttaa true
+		return false;
 	}
 	
 	/**
@@ -215,16 +241,16 @@ public class Nimipallo
 	public void piirraItse()
 	{
 		// Piirtaa taustaympyrat
-		for (int i = 1; i <= this.n; i++)
+		for (int i = 1; i <= this.vuosirenkaita; i++)
 		{
 			// Lasketaan pallon s‰de
-			int ri = (int) (this.r * (i / ((double) this.n)));
+			int ri = (int) (this.r * (i / ((double) this.vuosirenkaita)));
 			
 			// Asetetaan piirtov‰ri
 			// TODO: Mariannan duuni
 			
 			// Asetetaan kaaren paksuuus
-			this.pohja.strokeWeight(this.k);
+			this.pohja.strokeWeight(this.rengaspaksuus);
 			this.pohja.noFill();
 			
 			// Piirret‰‰n ympyr‰

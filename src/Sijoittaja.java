@@ -96,7 +96,10 @@ public class Sijoittaja
 				
 				// Tarkistaa, että pallo on kokonaan ikkunassa
 				if (!pallo.mahtuukoIkkunaan(uusix, uusiy,
-						this.leveys, this.korkeus))
+						this.leveys, this.korkeus, 30))
+					continue;
+				// Tarkistaa, että pallo ei osu slidereihin
+				if (pallo.leikkaakoSliderit(uusix, uusiy))
 					continue;
 				// Tarkistaa, ettei sijainnin kanssa törmäillä
 				if (!pallo.mahtuuSijaintiin(uusix, uusiy, this.nimet))
