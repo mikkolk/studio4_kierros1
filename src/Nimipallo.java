@@ -201,7 +201,7 @@ public class Nimipallo
 		// Checkkaa reunojen ylitykset
 		if (uusix - this.r < 0 + marginaali || uusix + this.r > w - marginaali)
 			return false;
-		if (uusiy - this.r < 0 + marginaali || uusiy + this.r > h - marginaali)
+		if (uusiy - this.r < 0 + marginaali + 50 || uusiy + this.r > h - marginaali)
 			return false;
 		
 		// Jos ei konflikteja, palauttaa true
@@ -220,15 +220,16 @@ public class Nimipallo
 	public boolean leikkaakoSliderit(int uusix, int uusiy)
 	{
 		// Checkkaa marginaalin reunojen ylitykset
-		/*
-		int slidx = pohja.annaSilderipiirtaja.annaYlinX();
-		int slidy = pohja.annaSlideripiirtaja.annaYlinY();
-		int w = pohja.annaSlideripiirtaja.annaYlinLeveys();
+		SlideriPiirtaja piirtaja =
+				((Visualisaatio) this.pohja).annaSlideriPiirtaja();
 		
-		if (uusix - this.r > slidx && uusix - this.r < slidx + w
-				&& uusiy + this.r > slidy)
+		int slidx = piirtaja.annaYlinX();
+		int slidy = piirtaja.annaYlinY();
+		int w = piirtaja.annaYlinLeveys();
+		
+		if (uusix - this.r > slidx - 16 && uusix - this.r < slidx + w + 16
+				&& uusiy + this.r > slidy -16)
 			return true;
-		*/
 		// Jos ei konflikteja, palauttaa true
 		return false;
 	}

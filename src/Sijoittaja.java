@@ -71,7 +71,7 @@ public class Sijoittaja
 			int uusimaara = nimidata.get(uusinimi);
 			
 			// Ei lisää nimiä, joita on vain 1 kpl
-			if (uusimaara == 1)
+			if (uusimaara <= 1)
 				break;
 			
 			Nimipallo pallo =
