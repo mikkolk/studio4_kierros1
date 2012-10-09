@@ -1,11 +1,17 @@
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import processing.core.*;
 
-public class Visualisaatio extends PApplet {
-
+/**
+ * 
+ * Visualisaatio piirtää kaiken näytölle ja hoitaa objektien alustamisesta
+ * Ohjelman alussa
+ *
+ * @author Gandalf.
+ *         Created 9.10.2012.
+ */
+public class Visualisaatio extends PApplet
+{
 	// ATTRIBUUTIT
 	private DataLukija lukija;
 	private Sijoittaja sijoittaja;
@@ -13,7 +19,7 @@ public class Visualisaatio extends PApplet {
 	@Override
 	public void setup()
 	{
-		size(800, 500);
+		size(1200, 600);
 		
 		// Alustaa datalukijan ja sijoittajan
 		this.lukija = new DataLukija("../nimilista.txt");

@@ -119,8 +119,8 @@ public class Sijoittaja
 	private Nimipallo lisaaPallo(int x, int y, String nimi, int n, int vuosia)
 	{
 		// Lasketaan pallon säde ja viivan paksuus
-		int r = (int)( (n / ( (double) vuosia)) * 60 + 5 );
-		int k = 10 - vuosia;
+		int r = (int)( (n / ( (double) vuosia)) * 70 + 5 );
+		int k = 13 - vuosia;
 		if (k < 1)
 			k = 1;
 		

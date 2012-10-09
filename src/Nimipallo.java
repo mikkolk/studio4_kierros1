@@ -201,6 +201,10 @@ public class Nimipallo
 		
 		// Asettaa fontin
 		// TODO: Jonkun muun duuni
-		this.pohja.text(this.nimi, this.x, this.y);
+		
+		// Sijoittaa ja piirt‰‰ tekstin
+		float txtw = this.pohja.textWidth(this.nimi);
+		float txth = this.pohja.textAscent();
+		this.pohja.text(this.nimi, this.x - txtw/2, this.y + txth/2);
 	}
 }
