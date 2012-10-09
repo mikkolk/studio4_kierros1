@@ -210,6 +210,31 @@ public class Nimipallo
 	
 	/**
 	 * 
+	 * Kertoo, tulisiko nimipallo sliderien taakse, jos se sijoitettaisiin
+	 * annettuihin koordinaatteihin
+	 *
+	 * @param uusix testattava x-koordinaatti
+	 * @param uusiy testattava y-koordinaatti
+	 * @return osuuko slidereihin
+	 */
+	public boolean leikkaakoSliderit(int uusix, int uusiy)
+	{
+		// Checkkaa marginaalin reunojen ylitykset
+		/*
+		int slidx = pohja.annaSilderipiirtaja.annaYlinX();
+		int slidy = pohja.annaSlideripiirtaja.annaYlinY();
+		int w = pohja.annaSlideripiirtaja.annaYlinLeveys();
+		
+		if (uusix - this.r > slidx && uusix - this.r < slidx + w
+				&& uusiy + this.r > slidy)
+			return true;
+		*/
+		// Jos ei konflikteja, palauttaa true
+		return false;
+	}
+	
+	/**
+	 * 
 	 * Piirt‰‰ nimipallon ympyr‰t sek‰ nimen
 	 *
 	 */
