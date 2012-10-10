@@ -13,9 +13,11 @@ public class Nimipallo
 {
 	// ATTRIBUUTIT
 	// jossa vuosirenkaita on nimien maara, r on pallon säde ja renkaan viivan paksuus
-	private int x, y, vuosirenkaita, r, rengaspaksuus;
+	private int x, y, vuosirenkaita, r, rengaspaksuus, opasiteetti, fonttikoko;
 	private String nimi;
 	private PApplet pohja;
+	private PFont font;
+	
 	
 	
 	// KONSTRUKTORI
@@ -41,6 +43,9 @@ public class Nimipallo
 		this.r = sade;
 		this.rengaspaksuus = paksuus;
 		this.pohja = pohja;
+		this.fonttikoko = 18;
+		this.font = this.pohja.createFont("../Mawns_Handwriting.ttf", this.fonttikoko);
+		this.opasiteetti = 0;
 	}
 	
 	
@@ -246,9 +251,12 @@ public class Nimipallo
 		{
 			// Lasketaan pallon säde
 			int ri = (int) (this.r * (i / ((double) this.vuosirenkaita)));
-			
+			this.opasiteetti = 35*this.vuosirenkaita;
+			this.pohja.stroke(255, 40, 40, this.opasiteetti);
+			this.opasiteetti = 0;
 			// Asetetaan piirtoväri
 			// TODO: Mariannan duuni
+			
 			
 			// Asetetaan kaaren paksuuus
 			this.pohja.strokeWeight(this.rengaspaksuus);
@@ -258,6 +266,20 @@ public class Nimipallo
 			this.pohja.ellipse(this.x, this.y, 2*ri, 2*ri);
 		}
 		
+		
+		if (this.vuosirenkaita > 4){
+		    this.fonttikoko = 25;
+		}
+		
+		if (this.vuosirenkaita > 8){
+		    this.fonttikoko = 50;
+		}
+		
+		if (this.vuosirenkaita > 12){
+		    this.fonttikoko = 65;
+		}
+		
+		this.pohja.textFont(font,fonttikoko);
 		// Piirtaa nimen
 		
 		// Asettaa fontin
@@ -267,5 +289,6 @@ public class Nimipallo
 		float txtw = this.pohja.textWidth(this.nimi);
 		float txth = this.pohja.textAscent();
 		this.pohja.text(this.nimi, this.x - txtw/2, this.y + txth/2);
+		this.pohja.fill(0);
 	}
 }

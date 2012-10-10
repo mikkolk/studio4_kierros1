@@ -127,8 +127,8 @@ public class Sijoittaja
 		// Lasketaan pallon säde ja viivan paksuus
 		int r = (int)( (n / ( (double) vuosia)) * 70 + 5 );
 		int k = 13 - vuosia;
-		if (k < 1)
-			k = 1;
+		if (k < 2)
+			k = 2;
 		
 		Nimipallo uusipallo = new Nimipallo(x, y, nimi,n, r, k, this.pohja);
 		this.nimet.add(uusipallo);

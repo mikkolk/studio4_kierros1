@@ -95,9 +95,7 @@ public class Visualisaatio extends PApplet
 		// Lukee vuodet datalukijalla
 		HashMap<String, Integer> data =
 				this.lukija.kokoaVuodet(a, b);
-		System.out.println(data.size());
 		String[] jarjestys = this.lukija.annaJarjestys(data);
-		System.out.println(jarjestys.length);
 		
 		// Sijoittaa datan kent‰lle
 		this.sijoittaja.sijoitaData(data, jarjestys, b - a + 1);
@@ -110,9 +108,6 @@ public class Visualisaatio extends PApplet
 	{
 		int uusiekavuos = this.slideripiirtaja.annaSlider1Arvo();
 		int uusivikavuos = this.slideripiirtaja2.annaSlider2Arvo();
-		
-		System.out.println(uusiekavuos);
-		System.out.println(uusivikavuos);
 		
 		// P‰ivitt‰‰ ruudun, mik‰li jotain muutosta tapahtui
 		if (uusiekavuos != this.viimeekavuos ||
