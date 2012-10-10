@@ -16,7 +16,8 @@ public class SlideriPiirtaja2 {
     public SlideriPiirtaja2(Visualisaatio pohja){
     	this.slider2Arvo = 2012;
         this.pohja = pohja;
-        this.slider2 = new GWSlider(this.pohja, (int) (0.2*(this.annaPohja().width)),
+        this.slider2 = new GWSlider(this.pohja, "omaSlider", 
+                (int) (0.2*(this.annaPohja().width)),
                 (int) (0.97*(this.annaPohja().height)),
                 (int) (0.6*(this.annaPohja().width)));
         this.slider2.setValueType(GWSlider.INTEGER);
