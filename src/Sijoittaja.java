@@ -57,7 +57,10 @@ public class Sijoittaja
 	 */
 	public boolean sijoitaData(HashMap<String, Integer> nimidata,
 			String[] nimijarjestys, int vuosia)
-	{	
+	{
+		// Ihan aluksi unohdetaan kaikki vanha
+		this.nimet = new ArrayList<Nimipallo>();
+		
 		Random rand = new Random();
 		
 		// Sijoittaa ensin eniten esiintyneen nimen keskelle
@@ -105,7 +108,7 @@ public class Sijoittaja
 				if (!pallo.mahtuuSijaintiin(uusix, uusiy, this.nimet))
 					continue;
 				// Tarkistaa, että lähellä (<50 px päässä) on toinen pallo
-				if (pallo.onkoLiianKaukana(uusix, uusiy, this.nimet, 30))
+				if (pallo.onkoLiianKaukana(uusix, uusiy, this.nimet, 20))
 					continue;
 					
 				// Jos kaikki OK, sijoittaa pallon uuteen sijaintiin

@@ -23,6 +23,7 @@ public class SlideriPiirtaja {
      * @param pohja pohjana toimiva Visualisaatio
      */
     public SlideriPiirtaja(Visualisaatio pohja){
+    	this.slider1Arvo = 1999;
         this.pohja = pohja;
         
         this.ylinX = (int) (0.2*(this.annaPohja().width));
@@ -68,6 +69,6 @@ public class SlideriPiirtaja {
      */
     public void handleSliderEvents(GSlider slider) {
         this.slider1Arvo = slider.getValue();
-        System.out.println(this.slider1Arvo);
+        //System.out.println(this.slider1Arvo);
     }
 }
