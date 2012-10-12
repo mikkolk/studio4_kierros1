@@ -34,7 +34,8 @@ public class Nimipallo
 	 * @param pohja PApplet, joka piirt‰‰ nimipallon
 	 */
 	public Nimipallo(int uusix, int uusiy, String uusinimi, int maara,
-			int sade, int paksuus, PApplet pohja)
+			int sade, int paksuus, PApplet pohja, int fonttikoko,
+			int opasiteetti, PFont fontti)
 	{
 		this.x = uusix;
 		this.y = uusiy;
@@ -43,9 +44,9 @@ public class Nimipallo
 		this.r = sade;
 		this.rengaspaksuus = paksuus;
 		this.pohja = pohja;
-		this.fonttikoko = 18;
-		this.font = this.pohja.createFont("../Mawns_Handwriting.ttf", this.fonttikoko);
-		this.opasiteetti = 0;
+		this.fonttikoko = fonttikoko;
+		this.opasiteetti = opasiteetti;
+		this.font = fontti;
 	}
 	
 	
@@ -246,14 +247,16 @@ public class Nimipallo
 	 */
 	public void piirraItse()
 	{
+		// Asettaa opasiteetin
+		this.pohja.stroke(255, 40, 40, this.opasiteetti);
+		
 		// Piirtaa taustaympyrat
 		for (int i = 1; i <= this.vuosirenkaita; i++)
 		{
 			// Lasketaan pallon s‰de
 			int ri = (int) (this.r * (i / ((double) this.vuosirenkaita)));
-			this.opasiteetti = 35*this.vuosirenkaita;
-			this.pohja.stroke(255, 40, 40, this.opasiteetti);
-			this.opasiteetti = 0;
+			
+			//this.opasiteetti = 0;
 			// Asetetaan piirtov‰ri
 			// TODO: Mariannan duuni
 			
@@ -267,19 +270,7 @@ public class Nimipallo
 		}
 		
 		
-		if (this.vuosirenkaita > 4){
-		    this.fonttikoko = 25;
-		}
-		
-		if (this.vuosirenkaita > 8){
-		    this.fonttikoko = 50;
-		}
-		
-		if (this.vuosirenkaita > 12){
-		    this.fonttikoko = 65;
-		}
-		
-		this.pohja.textFont(font,fonttikoko);
+		this.pohja.textFont(this.font, this.fonttikoko);
 		// Piirtaa nimen
 		
 		// Asettaa fontin

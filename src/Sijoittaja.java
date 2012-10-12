@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Random;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 
 
 /**
@@ -18,6 +19,7 @@ public class Sijoittaja
 	private ArrayList<Nimipallo> nimet;
 	private int leveys, korkeus;
 	private PApplet pohja;
+	private PFont font;
 	
 	
 	// KONSTRUKTORI
@@ -37,6 +39,7 @@ public class Sijoittaja
 		this.leveys = w;
 		this.korkeus = h;
 		this.pohja = pohja;
+		this.font = this.pohja.createFont("../Mawns_Handwriting.ttf", 18);
 	}
 	
 	
@@ -87,7 +90,8 @@ public class Sijoittaja
 			while (true)
 			{
 				iteraatioita ++;
-				if (iteraatioita > 10000)
+				
+				if (iteraatioita > 100000)
 				{
 					System.out.println("STACKOVERFLOOW");
 					break;
@@ -98,18 +102,21 @@ public class Sijoittaja
 				int uusiy = rand.nextInt(this.korkeus + 1);
 				
 				// Tarkistaa, että pallo on kokonaan ikkunassa
-				if (!pallo.mahtuukoIkkunaan(uusix, uusiy,
-						this.leveys, this.korkeus, 30))
+				if (iteraatioita < 90000) // Stackoverflowvaara yliajaa
+					if (!pallo.mahtuukoIkkunaan(uusix, uusiy,
+							this.leveys, this.korkeus, 30))
 					continue;
 				// Tarkistaa, että pallo ei osu slidereihin
-				if (pallo.leikkaakoSliderit(uusix, uusiy))
-					continue;
+				if (iteraatioita < 50000) // Stackoverflowvaara yliajaa
+					if (pallo.leikkaakoSliderit(uusix, uusiy))
+						continue;
 				// Tarkistaa, ettei sijainnin kanssa törmäillä
 				if (!pallo.mahtuuSijaintiin(uusix, uusiy, this.nimet))
 					continue;
 				// Tarkistaa, että lähellä (<50 px päässä) on toinen pallo
-				if (pallo.onkoLiianKaukana(uusix, uusiy, this.nimet, 20))
-					continue;
+				if (iteraatioita < 40000) // Stackoverflowvaara yliajaa
+					if (pallo.onkoLiianKaukana(uusix, uusiy, this.nimet, 20))
+						continue;
 					
 				// Jos kaikki OK, sijoittaa pallon uuteen sijaintiin
 				pallo.asetaSijainti(uusix, uusiy);
@@ -125,12 +132,35 @@ public class Sijoittaja
 	private Nimipallo lisaaPallo(int x, int y, String nimi, int n, int vuosia)
 	{
 		// Lasketaan pallon säde ja viivan paksuus
-		int r = (int)( (n / ( (double) vuosia)) * 70 + 5 );
+		int r = (int)( (n / ( (double) vuosia)) * 50 + 10 );
 		int k = 13 - vuosia;
 		if (k < 2)
 			k = 2;
 		
-		Nimipallo uusipallo = new Nimipallo(x, y, nimi,n, r, k, this.pohja);
+		int fonttikoko = 18;
+		//PFont font =
+			//this.pohja.createFont("../Mawns_Handwriting.ttf", fonttikoko);
+		int opasiteetti = 0;
+		
+		// Lasketaan fonttikoko
+		/*
+		if (n > 4)
+		    fonttikoko = 25;
+		
+		else if (n > 8)
+		    fonttikoko = 50;
+		
+		else if (n > 12)
+		    fonttikoko = 65;
+		   */
+		fonttikoko = 10 + (int) (3*n*(13/ (double) vuosia));
+		
+		// Lasketaan opasiteetti
+		//opasiteetti = (int) (10 + 25*n*(13 / (double) vuosia));
+		opasiteetti = 35*n;
+		
+		Nimipallo uusipallo = new Nimipallo(x, y, nimi,n, r, k, this.pohja,
+				fonttikoko, opasiteetti, this.font);
 		this.nimet.add(uusipallo);
 		
 		return uusipallo;
