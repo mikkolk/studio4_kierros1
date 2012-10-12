@@ -60,7 +60,8 @@ public class Visualisaatio extends PApplet
 	@Override
 	public void draw()
 	{	
-	    this.background(this.taustakuva);
+	    //this.background(this.taustakuva);
+		image(this.taustakuva, 0, 0);
 	    
 		// Checkkaa, tuliko vuosien puolesta muutoksia ja p‰ivitt‰‰
 		// tarvittaessa kuvan
