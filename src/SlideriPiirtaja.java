@@ -29,7 +29,7 @@ public class SlideriPiirtaja {
         this.ylinX = (int) (0.2*(this.annaPohja().width));
         this.ylinY = (int) (0.93*(this.annaPohja().height));
         this.ylinLeveys = (int) (0.6*(this.annaPohja().width));
-        this.slider1 = new GWSlider(this.pohja,"omaSlider", this.ylinX, this.ylinY,
+        this.slider1 = new GWSlider(this.pohja,"omaSliderFinal", this.ylinX, this.ylinY,
                 this.ylinLeveys);
         this.slider1.setValueType(GWSlider.INTEGER);
         this.slider1.setLimits(1999, 1999, 2012);
