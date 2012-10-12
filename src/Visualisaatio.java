@@ -17,6 +17,7 @@ public class Visualisaatio extends PApplet
 	private SlideriPiirtaja slideripiirtaja;
 	private SlideriPiirtaja2 slideripiirtaja2;
 	private int viimeekavuos, viimevikavuos;
+	private PImage taustakuva;
 	
 	public Sijoittaja annaSijoittaja(){
 	    return this.sijoittaja;
@@ -40,6 +41,7 @@ public class Visualisaatio extends PApplet
 		this.sijoittaja = new Sijoittaja(this.width, this.height, this);
 		this.slideripiirtaja = new SlideriPiirtaja(this);
 		this.slideripiirtaja2 = new SlideriPiirtaja2(this);
+		this.taustakuva = loadImage("../taustakuva.jpg");
 		
 		this.viimeekavuos = 1999;
 		this.viimevikavuos = 2012;
@@ -58,7 +60,7 @@ public class Visualisaatio extends PApplet
 	@Override
 	public void draw()
 	{	
-	    this.background(255);
+	    this.background(this.taustakuva);
 	    
 		// Checkkaa, tuliko vuosien puolesta muutoksia ja p‰ivitt‰‰
 		// tarvittaessa kuvan
