@@ -39,7 +39,7 @@ public class Sijoittaja
 		this.leveys = w;
 		this.korkeus = h;
 		this.pohja = pohja;
-		this.font = this.pohja.createFont("../Mawns_Handwriting.ttf", 18);
+		this.font = this.pohja.createFont("Mawns_Handwriting.ttf", 18);
 	}
 	
 	

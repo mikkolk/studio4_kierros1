@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -21,7 +22,7 @@ public class DataLukija
 	// Nimidata sis‰lt‰‰ hashmapin (kaikki) hashmapeista (vuosikohtaiset),
 	// jotka sis‰lt‰v‰t nimi-luku-pareja (esiintymism‰‰r‰)
 	private HashMap<Integer, HashMap<String, Integer>> 	nimidata;
-	private File						tiedosto;
+	//private File						tiedosto;
 	
 	
 	// KONSTRUKTORI -------------------------------------------------
@@ -36,13 +37,13 @@ public class DataLukija
 	{
 		// Alustaa muuttujat
 		// TODO: Lis‰‰ tarkistus t‰nne?
-		this.tiedosto = new File(tiedostonimi);
 		this.nimidata = new HashMap<Integer, HashMap<String, Integer>>();
 		
 		// Lukee datan tiedostosta
 		try
 		{
-			lueDataTiedostosta(this.tiedosto);
+			System.out.println(this.getClass().getResource(tiedostonimi));
+		    lueDataTiedostosta(this.getClass().getResourceAsStream( tiedostonimi));
 		}
 		catch (FileNotFoundException fnfe)
 		{
@@ -53,11 +54,11 @@ public class DataLukija
 	// OMAT METDIT ---------------------------------------------------
 	
 	// Lukee nimet tiedostosta ja tallentaa ne tietokantaan
-	private void lueDataTiedostosta(File datatiedosto)
+	private void lueDataTiedostosta(InputStream stream)
 			throws FileNotFoundException
 	{
 		// Luodaan skanneri
-		Scanner skanneri = new Scanner(datatiedosto);
+	    Scanner skanneri = new Scanner(stream);
 		
 		// Muistaa, mihin tieto tulee tallentaa
 		HashMap<String, Integer> vuosidata = null;

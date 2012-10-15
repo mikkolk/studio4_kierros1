@@ -2,5 +2,7 @@
 /.settings/org.eclipse.jdt.core.prefs
 .classpath
 .project
-/bin
+/bin/*.class
+/bin/*.applet
 preferences.txt
+applet/

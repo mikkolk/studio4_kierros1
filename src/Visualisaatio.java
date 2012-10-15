@@ -37,11 +37,11 @@ public class Visualisaatio extends PApplet
 		size(1200, 600);
 		
 		// Alustaa datalukijan, sijoittajan ja slideripiirtajan
-		this.lukija = new DataLukija("../nimilista.txt");
+		this.lukija = new DataLukija("nimilista.txt");
 		this.sijoittaja = new Sijoittaja(this.width, this.height, this);
 		this.slideripiirtaja = new SlideriPiirtaja(this);
 		this.slideripiirtaja2 = new SlideriPiirtaja2(this);
-		this.taustakuva = loadImage("../taustakuva.jpg");
+		this.taustakuva = loadImage("taustakuva.jpg");
 		
 		this.viimeekavuos = 1999;
 		this.viimevikavuos = 2012;
@@ -125,4 +125,7 @@ public class Visualisaatio extends PApplet
 		
 		return false;
 	}
+	public static void main(String[] args) {
+	    PApplet.main(new String[] {"Visualisaatio"});
+	    }
 }
